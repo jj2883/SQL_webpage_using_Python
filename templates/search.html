@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h2>The search for {{search}} in {{t_name}} yielded:</h2>
+
+<style type="text/css">
+TD {
+    padding: 10px;
+}
+</style>
+
+<table>
+{% for f in fields %}
+<TD>
+{% for x in f %}
+   <b>{{x}}</b>
+{% endfor %}
+</TD>
+  {% endfor %}
+
+{% for t in table %}
+<TR>
+{% for x in t %}
+   <TD>{{x}}</TD>
+{% endfor %}
+</TR>
+  {% endfor %}
+</table>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h2>The following tables are available:</h2>
+<!--<h3>Entities</h3>-->
+<div>
+  {% for n in entities %}
+  <div>- <a href={{n}}>{% filter title %}{{n}}{% endfilter %}</a></div>
+  {% endfor %}
+</div>
+<!--
+<h3>Relations</h3>
+<div>
+  {% for n in relations %}
+  <div>- <a href={{n}}>{{n}}</a></div>
+  {% endfor %}
+</div>
+-->
+
+{% endblock %}
