@@ -83,6 +83,9 @@ def index():
 
 
 
+@app.errorhandler(500)
+def page_not_found(e):
+    return render_template('505.html'), 500
 
 class List_Search(MethodView):
 
