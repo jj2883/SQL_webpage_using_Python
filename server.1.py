@@ -141,7 +141,7 @@ class List_Search(MethodView):
 
             else:
 
-            	search=search.capitalize().
+            	search=search.capitalize()
 
             	query = "SELECT * FROM player p where p.player_last_name = {};".format(search)
 
@@ -170,7 +170,7 @@ class List_Search(MethodView):
             	cursor = g.conn.execute(query, (search_ph,))
 
             else:
-            	search=search.capitalize().
+            	search=search.capitalize()
 
             	query = "SELECT home_team_name, points_home_team, away_team_name, points_away_team FROM game g, (select * from play_) pl where pl.game_id = g.game_id and (g.away_team_name={} or g.home_team_name={});".format(search,search)
 
@@ -211,7 +211,7 @@ class List_Search(MethodView):
             	cursor = g.conn.execute(query, (search_ph,))
 
             else:
-            	search=search.capitalize().
+            	search=search.capitalize()
 
             	query = "SELECT home_team_name, points_home_team, away_team_name, points_away_team FROM game g, (select * from play_) pl where pl.game_id = g.game_id and (g.away_team_name={} or g.home_team_name={});".format(search,search)
 
