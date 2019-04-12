@@ -166,7 +166,7 @@ class List_Search(MethodView):
 
             elif search == 'game':
 
-            	query = "SELECT game_id, home_team_name, points_home_team, away_team_name, points_away_team FROM game g, (select * from play_) pl where pl.game_id = g.game_id;"
+            	query = "SELECT pl.game_id, home_team_name, points_home_team, away_team_name, points_away_team FROM game g, (select * from play_) pl where pl.game_id = g.game_id;"
 
             	cursor = g.conn.execute(query, (search_ph,))
 
@@ -216,7 +216,7 @@ class List_Search(MethodView):
             	search=search.capitalize()
             	search="\'"+search+"\'"
 
-            	query = "SELECT game_id, home_team_name, points_home_team, away_team_name, points_away_team FROM game g, (select * from play_) pl where pl.game_id = g.game_id and (pl.away_team_name={0} or pl.home_team_name={1});".format(search,search)
+            	query = "SELECT pl.game_id, home_team_name, points_home_team, away_team_name, points_away_team FROM game g, (select * from play_) pl where pl.game_id = g.game_id and (pl.away_team_name={0} or pl.home_team_name={1});".format(search,search)
 
             	cursor = g.conn.execute(query, (search_ph,))
 
