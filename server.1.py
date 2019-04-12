@@ -174,7 +174,7 @@ class List_Search(MethodView):
             	search=search.capitalize()
             	search="\'"+search+"\'"
 
-            	query = "SELECT home_team_name, points_home_team, away_team_name, points_away_team FROM game g, (select * from play_) pl where g.game_id = pl.game_id and (g.away_team_name={} or g.home_team_name={});".format(search,search)
+            	query = "SELECT home_team_name, points_home_team, away_team_name, points_away_team FROM game g, (select * from play_) pl where g.game_id = pl.game_id and (g.away_team_name={0} or g.home_team_name={1});".format(search,search)
 
             	cursor = g.conn.execute(query, (search_ph,))
 
@@ -216,7 +216,7 @@ class List_Search(MethodView):
             	search=search.capitalize()
             	search="\'"+search+"\'"
 
-            	query = "SELECT home_team_name, points_home_team, away_team_name, points_away_team FROM game g, (select * from play_) pl where pl.game_id = g.game_id and (g.away_team_name={} or g.home_team_name={});".format(search,search)
+            	query = "SELECT home_team_name, points_home_team, away_team_name, points_away_team FROM game g, (select * from play_) pl where pl.game_id = g.game_id and (g.away_team_name=0} or g.home_team_name={1});".format(search,search)
 
             	cursor = g.conn.execute(query, (search_ph,))
 
