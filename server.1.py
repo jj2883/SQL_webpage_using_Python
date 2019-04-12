@@ -144,7 +144,7 @@ class List_Search(MethodView):
             	search=search.capitalize()
             	search="\'"+search+"\'"
 
-            	query = "SELECT * FROM player p where p.player_last_name = '{}';".format(search)
+            	query = "SELECT * FROM player p where p.player_last_name = {};".format(search)
 
             	cursor = g.conn.execute(query, (search_ph,))
 
@@ -174,7 +174,7 @@ class List_Search(MethodView):
             	search=search.capitalize()
             	search="\'"+search+"\'"
 
-            	query = "SELECT home_team_name, points_home_team, away_team_name, points_away_team FROM game g, (select * from play_) pl where pl.game_id = g.game_id and (g.away_team_name={} or g.home_team_name={});".format(search,search)
+            	query = "SELECT home_team_name, points_home_team, away_team_name, points_away_team FROM game g, (select * from play_) pl where g.game_id = pl.game_id and (g.away_team_name={} or g.home_team_name={});".format(search,search)
 
             	cursor = g.conn.execute(query, (search_ph,))
 
@@ -199,7 +199,7 @@ class List_Search(MethodView):
         elif name == 'game':
         	
 
-#            cursor = g.conn.execute(query)
+            cursor = g.conn.execute(query)
             if search == 'player':
 
             	query = "SELECT p.player_first_name, p.player_last_name, s.game_id FROM player p, game g, (select * from statline) s where s.player_id = p.player_id and s.game_id=g.game_id;"
